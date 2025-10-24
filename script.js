@@ -8,12 +8,7 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Enter one of: " + choices).toLowerCase()
-    return humanChoice
-}
-
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if (humanChoice == computerChoice) {
         console.log("TIE: both played " + humanChoice)
     } else if (
@@ -29,13 +24,11 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function game(numRounds = 5) {
-    for (let i = 0; i < numRounds; i++) {
-        console.log("Round " + i)
-        playRound(getHumanChoice(), getComputerChoice())
-    }
-    console.log("Your score: " + humanScore)
-    console.log("Computer's Score: " + computerScore)
-}
+// add event listeners for the buttons
+const rockButton = document.querySelector("#rock-button")
+const paperButton = document.querySelector("#paper-button")
+const scissorsButton = document.querySelector("#scissors-button")
 
-game(5)
+rockButton.addEventListener("click", () => playRound(choices[0]))
+paperButton.addEventListener("click", () => playRound(choices[1]))
+scissorsButton.addEventListener("click", () => playRound(choices[2]))
