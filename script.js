@@ -1,28 +1,28 @@
 "use strict"
 const choices = ["rock", "paper", "scissors"]
 const numRounds = 5
-let humanScore = 0
+let playerScore = 0
 let computerScore = 0
 
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
-function playRound(humanChoice, computerChoice = getComputerChoice()) {
-    if (humanChoice == computerChoice) {
-        message.textContent = "TIE: both played " + humanChoice
+function playRound(playerChoice, computerChoice = getComputerChoice()) {
+    if (playerChoice == computerChoice) {
+        message.textContent = "TIE: both played " + playerChoice
     } else if (
-        (humanChoice == "rock" && computerChoice == "scissors") ||
-        (humanChoice == "paper" && computerChoice == "rock") ||
-        (humanChoice == "scissors" && computerChoice == "paper")
+        (playerChoice == "rock" && computerChoice == "scissors") ||
+        (playerChoice == "paper" && computerChoice == "rock") ||
+        (playerChoice == "scissors" && computerChoice == "paper")
     ) {
-        message.textContent = "WIN: your " + humanChoice + " beats the computer's " + computerChoice
-        humanScore++
+        message.textContent = "WIN: your " + playerChoice + " beats the computer's " + computerChoice
+        playerScore++
     } else {
-        message.textContent = "LOSE: the computer's " + computerChoice + " beats your " + humanChoice
+        message.textContent = "LOSE: the computer's " + computerChoice + " beats your " + playerChoice
         computerScore++
     }
-    playerScoreDisplay.textContent = humanScore
+    playerScoreDisplay.textContent = playerScore
     computerScoreDisplay.textContent = computerScore
 }
 
