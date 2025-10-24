@@ -10,18 +10,20 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice = getComputerChoice()) {
     if (humanChoice == computerChoice) {
-        console.log("TIE: both played " + humanChoice)
+        message.textContent = "TIE: both played " + humanChoice
     } else if (
         (humanChoice == "rock" && computerChoice == "scissors") ||
         (humanChoice == "paper" && computerChoice == "rock") ||
         (humanChoice == "scissors" && computerChoice == "paper")
     ) {
-        console.log("WIN: your " + humanChoice + " beats the computer's " + computerChoice)
+        message.textContent = "WIN: your " + humanChoice + " beats the computer's " + computerChoice
         humanScore++
     } else {
-        console.log("LOSE: the computer's " + computerChoice + " beats your " + humanChoice)
+        message.textContent = "LOSE: the computer's " + computerChoice + " beats your " + humanChoice
         computerScore++
     }
+    playerScoreDisplay.textContent = humanScore
+    computerScoreDisplay.textContent = computerScore
 }
 
 // add event listeners for the buttons
@@ -32,3 +34,8 @@ const scissorsButton = document.querySelector("#scissors-button")
 rockButton.addEventListener("click", () => playRound(choices[0]))
 paperButton.addEventListener("click", () => playRound(choices[1]))
 scissorsButton.addEventListener("click", () => playRound(choices[2]))
+
+// get result DOMs
+const message = document.querySelector("#message")
+const playerScoreDisplay = document.querySelector("#player-score")
+const computerScoreDisplay = document.querySelector("#computer-score")
